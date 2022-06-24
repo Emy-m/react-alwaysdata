@@ -44,8 +44,8 @@ function Login() {
     <div>
       <h1>Login</h1>
       <form>
-        <label>Email</label>
-        <input type="email" name="username" onChange={handleChange} />
+        <label>Username</label>
+        <input type="text" name="username" onChange={handleChange} />
         <label>Password</label>
         <input type="password" name="password" onChange={handleChange} />
         <button onClick={handleSubmit}>Login</button>
