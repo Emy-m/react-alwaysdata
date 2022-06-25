@@ -3,6 +3,38 @@ export default class Auth {
     this.api_url = api_url;
   }
 
+  register(email, username, password, verifyPassword) {
+    return new Promise((resolve, reject) => {
+      if (password !== verifyPassword) {
+        reject("Las claves no coinciden");
+      }
+      const data = {
+        email,
+        username,
+        password,
+      };
+
+      fetch(this.api_url + "auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            reject(data.error);
+          } else {
+            resolve();
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
   login(username, password) {
     return new Promise((resolve, reject) => {
       const data = {

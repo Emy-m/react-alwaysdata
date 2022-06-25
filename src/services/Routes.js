@@ -5,6 +5,7 @@ import Auth from "./Auth";
 import Login from "../components/Auth/Login";
 import UserList from "../components/Users/UserList";
 import Dashboard from "../components/Dashboard/Dashboard";
+import Register from "../components/Auth/Register";
 
 export default function Router() {
   const auth = new Auth();
@@ -35,16 +36,16 @@ export default function Router() {
         />
       ),
     },
-    /* {
+    {
       path: "/registro",
       element: (
         <GuardedRoute
-          component={Registro}
-          condition={!auth.isAuthenticated()}
+          component={Register}
+          condition={!auth.isLoggedIn()}
           failNavigate="/"
         />
       ),
-    }, */
+    },
     { path: "*", element: <div>Nao nao nao manito</div> },
   ]);
 }

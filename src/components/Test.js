@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { environment } from "../environment";
 
 function Test() {
   const [get, setGet] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://emiunrn.alwaysdata.net/")
+    fetch(environment.API_URL)
       .then((res) => res.json())
       .then((data) => {
         setGet(data);
