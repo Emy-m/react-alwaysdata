@@ -115,10 +115,10 @@ export default function Register() {
                 <TextField
                   required
                   fullWidth
-                  name="verifypassword"
+                  name="verifyPassword"
                   label="Verify Password"
                   type="password"
-                  id="verifypassword"
+                  id="verifyPassword"
                   onChange={handleChange}
                 />
               </Grid>

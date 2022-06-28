@@ -26,13 +26,15 @@ function UserList() {
         Authorization: auth.getToken(),
       },
     })
-      .then((res) => res.json())
-      .then((users) => {
-        if (users.error) {
-          setError(users.error);
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
         } else {
-          setUsers(users);
+          return Promise.reject("Server Error");
         }
+      })
+      .then((json) => {
+        setUsers(json.data.users);
       })
       .catch((err) => {
         setError(err);
